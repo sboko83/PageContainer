@@ -9,7 +9,7 @@ import SwiftUI
 
 //typealias PCConfig = PageContainerConfig
 
-public final class PageContainerConfig {
+open class PageContainerConfig {
     
     public static let sharedInstance = PageContainerConfig()
     private init() {}
@@ -31,10 +31,21 @@ public final class PageContainerConfig {
     // MARK: - Default values
     
     public struct Border {
-        var loading: Bool = true
-        var alert: Bool = true
-        var actionSheet: Bool = true
-        var bottomButtons: Bool = true
+        
+        public var loading: Bool
+        public var alert: Bool
+        public var actionSheet: Bool
+        public var bottomButtons: Bool
+        
+        public init(loading: Bool = true,
+                    alert: Bool = true,
+                    actionSheet: Bool = true,
+                    bottomButtons: Bool = true) {
+            self.loading = loading
+            self.alert = alert
+            self.actionSheet = actionSheet
+            self.bottomButtons = bottomButtons
+        }
     }
     
     public struct Colors {
@@ -45,49 +56,116 @@ public final class PageContainerConfig {
         public var bottomButtons = BottomButtons()
         
         public struct Loading {
-            var background: Color = Color(UIColor.systemBackground)
-            var text: Color = Color(UIColor.label)
-            var border: Color = Color(UIColor.label)
+            
+            public var background: Color
+            public var text: Color
+            public var border: Color
+            
+            public init(background: Color = Color(UIColor.systemBackground),
+                        text: Color = Color(UIColor.label),
+                        border: Color = Color(UIColor.label)) {
+                self.background = background
+                self.text = text
+                self.border = border
+            }
         }
         
         public struct Alert {
-            var background: Color = Color(UIColor.systemBackground)
-            var text: Color = Color(UIColor.label)
-            var button: Color = Color(UIColor.systemGray4)
-            var textButton: Color = Color(UIColor.label)
-            var border: Color = Color(UIColor.label)
+            
+            public var background: Color
+            public var text: Color
+            public var button: Color
+            public var textButton: Color
+            public var border: Color
+            
+            internal init(background: Color = Color(UIColor.systemBackground),
+                          text: Color = Color(UIColor.label),
+                          button: Color = Color(UIColor.systemGray4),
+                          textButton: Color = Color(UIColor.label),
+                          border: Color = Color(UIColor.label)) {
+                self.background = background
+                self.text = text
+                self.button = button
+                self.textButton = textButton
+                self.border = border
+            }
         }
         
         public struct ActionSheet {
-            var background: Color = Color(UIColor.systemBackground)
-            var title: Color = Color(UIColor.label)
-            var border: Color = Color(UIColor.label)
             
-            var buttonText: Color = Color(UIColor.label)
-            var buttonBackground: Color = Color(UIColor.systemGray4)
-            var buttonSelectedText: Color = Color(UIColor.label)
-            var buttonSelectedBackground: Color = .accentColor
+            public var background: Color
+            public var title: Color
+            public var border: Color
+            
+            public var buttonText: Color
+            public var buttonBackground: Color
+            public var buttonSelectedText: Color
+            public var buttonSelectedBackground: Color
+            
+            public init(background: Color = Color(UIColor.systemBackground),
+                        title: Color = Color(UIColor.label),
+                        border: Color = Color(UIColor.label),
+                        buttonText: Color = Color(UIColor.label),
+                        buttonBackground: Color = Color(UIColor.systemGray4),
+                        buttonSelectedText: Color = Color(UIColor.label),
+                        buttonSelectedBackground: Color = .accentColor) {
+                self.background = background
+                self.title = title
+                self.border = border
+                self.buttonText = buttonText
+                self.buttonBackground = buttonBackground
+                self.buttonSelectedText = buttonSelectedText
+                self.buttonSelectedBackground = buttonSelectedBackground
+            }
         }
         
         public struct BottomButtons {
-            var background: Color = Color(UIColor.systemBackground)
-            var title: Color = Color(UIColor.label)
-            var border: Color = Color(UIColor.label)
+            
+            public var background: Color
+            public var title: Color
+            public var border: Color
+            
+            public init(background: Color = Color(UIColor.systemBackground),
+                          title: Color = Color(UIColor.label),
+                          border: Color = Color(UIColor.label)) {
+                self.background = background
+                self.title = title
+                self.border = border
+            }
         }
     }
     
     public struct CornerRadius {
-        var base: CGFloat = 24.0
-        var button: CGFloat = 16.0
+        
+        public var base: CGFloat
+        public var button: CGFloat
+        
+        public init(base: CGFloat = 24.0,
+                    button: CGFloat = 16.0) {
+            self.base = base
+            self.button = button
+        }
     }
     
     public struct Sizes {
-        var alertMinWidth: CGFloat = 120.0
+        
+        public var alertMinWidth: CGFloat
+        
+        public init(alertMinWidth: CGFloat = 120.0) {
+            self.alertMinWidth = alertMinWidth
+        }
     }
     
     public struct Strings {
-        var stringLoading: String = "Loading..."
-        var stringBtnOK: String = "OK"
+        
+        public var stringLoading: String
+        public var stringBtnOK: String
+        
+        public init(stringLoading: String = "Loading...",
+                    stringBtnOK: String = "OK") {
+            self.stringLoading = stringLoading
+            self.stringBtnOK = stringBtnOK
+        }
     }
     
 }

@@ -8,7 +8,9 @@
 import SwiftUI
 import Combine
 
-public class PageContainerViewModel: ObservableObject {
+open class PageContainerViewModel: ObservableObject {
+    
+    public init() {}
     
     // MARK: - ActionSheet
     

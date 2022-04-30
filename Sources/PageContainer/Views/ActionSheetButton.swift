@@ -9,11 +9,21 @@ import SwiftUI
 
 public struct ActionSheetButton {
     
-    var title: String
+    public var title: String
     
-    var isClose: Bool = true
-    var selected: Bool = false
+    public var isClose: Bool = true
+    public var selected: Bool = false
     
-    var pressHandler: (() -> Void)?
+    public var pressHandler: (() -> Void)?
+    
+    public init(title: String,
+                isClose: Bool = true,
+                selected: Bool = false,
+                pressHandler: (() -> Void)? = nil) {
+        self.title = title
+        self.isClose = isClose
+        self.selected = selected
+        self.pressHandler = pressHandler
+    }
     
 }
