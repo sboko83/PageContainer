@@ -48,7 +48,7 @@ struct AlertViewButtonStyle: ButtonStyle {
             .modifier(AlertButtonStyle())
             .padding(.horizontal, 20.0)
             .padding(.vertical, 8.0)
-            .background(pcConfig.color.alert.button.cornerRadius(pcConfig.cornerRadius.button))
+            .background(pcConfig.color.alert.buttonBackground.cornerRadius(pcConfig.cornerRadius.button))
             .scaleEffect(configuration.isPressed ? 0.96 : 1.0)
     }
     

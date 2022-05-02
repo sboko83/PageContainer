@@ -42,7 +42,7 @@ open class PageContainerViewModel: ObservableObject {
         }
     }
     
-    public func resetActionSheet() {
+    public func hideActionSheet() {
         withAnimation(.easeOut(duration: 0.5)) {
             self.hasActionSheet = false
         }
@@ -107,7 +107,7 @@ open class PageContainerViewModel: ObservableObject {
         }
     }
     
-    public func resetAlert() {
+    public func hideAlert() {
         withAnimation(.easeOut(duration: 0.5)) {
             self.hasAlert = false
         }
@@ -142,7 +142,7 @@ open class PageContainerViewModel: ObservableObject {
         }
     }
     
-    public func resetBottomButtons() {
+    public func hideBottomButtons() {
         withAnimation(.easeOut(duration: 0.5)) {
             self.hasBottomButtons = false
         }
@@ -170,4 +170,25 @@ open class PageContainerViewModel: ObservableObject {
         }
     }
     
+    // MARK: - Custom view
+    
+    @Published var hasCustomView: Bool = false
+    @Published var customView: AnyView = AnyView(EmptyView())
+    
+    
+    public func showCustomView(_ custom: AnyView) {
+        customView = custom
+        
+        withAnimation(.easeIn) {
+            self.hasCustomView = true
+        }
+    }
+    
+    public func hideCustomView() {
+        customView = AnyView(EmptyView())
+        
+        withAnimation(.easeOut) {
+            self.hasCustomView = false
+        }
+    }
 }

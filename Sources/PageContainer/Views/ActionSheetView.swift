@@ -15,7 +15,7 @@ struct ActionSheetView: View {
     
     var body: some View {
         ZStack {
-            Button(action: model.resetActionSheet) {
+            Button(action: model.hideActionSheet) {
                 VStack {
                     Spacer(minLength: 0.0)
                     HStack {
@@ -60,7 +60,7 @@ struct ActionSheetView: View {
             strongHandler()
         }
         if button.isClose {
-            self.model.resetActionSheet()
+            self.model.hideActionSheet()
         }
     }
 }

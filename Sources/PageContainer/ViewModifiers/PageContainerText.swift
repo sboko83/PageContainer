@@ -51,7 +51,7 @@ struct AlertButtonStyle: ViewModifier {
     func body(content: Content) -> some View {
         content
             .modifier(TextStyle(size: 14.0, weight: .medium,
-                                color: PageContainerConfig.sharedInstance.color.alert.textButton))
+                                color: PageContainerConfig.sharedInstance.color.alert.buttonText))
     }
 }
 

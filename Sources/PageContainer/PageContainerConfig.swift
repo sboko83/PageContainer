@@ -20,6 +20,15 @@ open class PageContainerConfig {
     public var size = Sizes()
     public var strings = Strings()
     
+    // MARK: - Methods
+    
+    public func allBordersVisible(_ state: Bool) {
+        border.alert = state
+        border.actionSheet = state
+        border.bottomButtons = state
+        border.loading = state
+    }
+    
     public func restoreDefaults() {
         border = Border()
         color = Colors()
@@ -74,20 +83,21 @@ open class PageContainerConfig {
             
             public var background: Color
             public var text: Color
-            public var button: Color
-            public var textButton: Color
             public var border: Color
+            
+            public var buttonText: Color
+            public var buttonBackground: Color
             
             internal init(background: Color = Color(UIColor.systemBackground),
                           text: Color = Color(UIColor.label),
-                          button: Color = Color(UIColor.systemGray4),
-                          textButton: Color = Color(UIColor.label),
-                          border: Color = Color(UIColor.label)) {
+                          border: Color = Color(UIColor.label),
+                          buttonText: Color = Color(UIColor.label),
+                          buttonBackground: Color = Color(UIColor.systemGray4)) {
                 self.background = background
                 self.text = text
-                self.button = button
-                self.textButton = textButton
                 self.border = border
+                self.buttonText = buttonText
+                self.buttonBackground = buttonBackground
             }
         }
         

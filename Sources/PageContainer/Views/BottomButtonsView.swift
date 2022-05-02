@@ -15,9 +15,7 @@ struct BottomButtonsView: View {
     
     var body: some View {
         ZStack {
-            Button(action: {
-                model.resetBottomButtons()
-            }) {
+            Button(action: model.hideBottomButtons) {
                 VStack {
                     Spacer(minLength: 0.0)
                     HStack {
@@ -84,7 +82,7 @@ struct BottomButtonsView: View {
             strongHandler()
         }
         if button.isClose {
-            self.model.resetBottomButtons()
+            self.model.hideBottomButtons()
         }
     }
     

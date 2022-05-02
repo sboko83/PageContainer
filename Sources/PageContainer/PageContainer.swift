@@ -13,7 +13,8 @@ public struct PageContainer<Content: View>: View {
 
     private let content: Content
 
-    public init(_ containerModel: PageContainerViewModel, @ViewBuilder content: () -> Content) {
+    public init(_ containerModel: PageContainerViewModel,
+                @ViewBuilder content: () -> Content) {
         self.viewModel = containerModel
         self.content = content()
     }
@@ -26,42 +27,51 @@ public struct PageContainer<Content: View>: View {
             
             // MARK: - Alert
             
-            if self.viewModel.hasAlert {
+            if viewModel.hasAlert {
                 AlertView(model: viewModel)
             }
             
             // MARK: - ActionSheet
             
-            if self.viewModel.hasActionSheet {
+            if viewModel.hasActionSheet {
                 ActionSheetView(model: viewModel)
             }
             
             // MARK: - BottomButtons
             
-            if self.viewModel.hasBottomButtons {
+            if viewModel.hasBottomButtons {
                 BottomButtonsView(model: viewModel)
             }
             
             // MARK: - Loading
             
-            if self.viewModel.isLoading {
+            if viewModel.isLoading {
                 LoadingView()
+            }
+            
+            // MARK: - CustomView
+            
+            if viewModel.hasCustomView {
+                CustomView(alignment: .bottomLeading,
+                           model: viewModel)
             }
         }
     }
     
     private var blurValue: CGFloat {
-        (self.viewModel.hasAlert ||
-         self.viewModel.hasActionSheet ||
-         self.viewModel.hasBottomButtons ||
-         self.viewModel.isLoading) ? 3 : 0
+        (viewModel.hasAlert ||
+         viewModel.hasActionSheet ||
+         viewModel.hasBottomButtons ||
+         viewModel.isLoading ||
+         viewModel.hasCustomView) ? 3 : 0
     }
     
     private var disabledState: Bool {
-        self.viewModel.hasAlert ||
-        self.viewModel.hasActionSheet ||
-        self.viewModel.hasBottomButtons ||
-        self.viewModel.isLoading
+        viewModel.hasAlert ||
+        viewModel.hasActionSheet ||
+        viewModel.hasBottomButtons ||
+        viewModel.isLoading ||
+        viewModel.hasCustomView
     }
     
 }

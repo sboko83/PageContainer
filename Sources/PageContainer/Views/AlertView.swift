@@ -70,6 +70,6 @@ struct AlertView: View {
     
     private func buttonPressed() {
         model.alertCompletion()
-        model.resetAlert()
+        model.hideAlert()
     }
 }
