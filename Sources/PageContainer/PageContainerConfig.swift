@@ -22,6 +22,13 @@ open class PageContainerConfig {
     
     // MARK: - Methods
     
+    public func allBackgrounds(color: Color) {
+        self.color.loading.background = color
+        self.color.alert.background = color
+        self.color.actionSheet.background = color
+        self.color.bottomButtons.background = color
+    }
+    
     public func allBordersVisible(_ state: Bool) {
         border.alert = state
         border.actionSheet = state
