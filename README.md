@@ -1,63 +1,74 @@
 # PageContainer
+[![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)
 
-Page, из названия, это аналогия с web-страницей на сайтах. Контейнер страницы располагается на самом верхнем уровне view и предоставляет вам простой способ вывода на экран AlertView, ActionSheetView, BottomButtonsView и LoadingView через ViewModel.
-Не нужно создавать state-переменные и прочее. Показ осуществляется через вызов методов ViewModel. Это крайне удобно, особенно, когда у вас в приложении много экранов.
-Выводимые view можно модифицировать при помощи *PageContainerConfig* (singleton). Изменять можно цвет фона, цвет текста, кнопок, рамок, радиус скругления и прочее.
+_PageContainer_ implements a simple way to display AlertView, Action Sheet View, etc.
+The page container is located at the topmost level of the view. No need to create state variables and stuff. The display is performed by calling the ViewModel methods. This is convenient when you have a lot of screens in your application, as well as when you need the view to look non-standard.
+The output views can be modified using _PageContainerConfig_ (singleton). You can change the background color, text color, buttons, frames, rounding radius, and so on.
 
-LoadingView блокирует экран и отображает информацию, в центре экрана, о то что происходит загрузка.
-AlertView выводит в центре экрана информацию: иконку, заголовок, текст и кнопку OK.
-ActionSheetView выводит в центре экрана: заголовок, тело (другое view, опционально) и массив кнопок.
-BottomButtonsView выводит внизу экрана: заголовок (опционально) и массив кнопок.
+LoadingView locks the screen and displays information in the center of the screen about what is loading.
+AlertView displays information in the center of the screen: an icon, a title, text and an OK button.
+Action Sheet View displays in the center of the screen: title, body (other view, optional) and an array of buttons.
+Bottom Buttons View displays at the bottom of the screen: the title (optional) and an array of buttons.
 
-Демо проект есть по адресу: TODO
+[README на русском языке](https://github.com/sboko83/PageContainer/blob/main/README_ru.md)
 
----
 
-## Установка
+## Requirements
+* iOS 14.0+
+
+
+## Installation
 
 **Swift Package Manager**
 
-TODO
+In Xcode:
+File - Swift Packages - Add Package Dependency...
+Use the URL (https://github.com/sboko83/PageContainer)
 
-**Ручная установка**
+**Manually**
 
-Проект не имеет внешних зависимостей.
-Если необходимо добавить PageContainer к другому проекту, то нужно скопировать папку *PageContainer* в ваш проект с опциями "Copy items is needed" и "Create groups".
+The project has no external dependencies.
+If you need to add a PageContainer to another project, you need to copy the _PageContainer_ folder to your project with the options "Copy items is needed" and "Create groups".
 
----
 
-## Примеры использования
+## Examples
 
-**Основные действия**
-Нужно создать ViewModel и наследовать ее от *PageContainerViewModel*.
-В корневом View, которое отвечает за весь экран добавляем ViewModel и вызов *PageContainer*.
-```
+**Common**
+Before using it, you need to import the module.
+You need to create a ViewModel and inherit it from _PageContainerViewModel_.
+In the root View, which is responsible for the entire screen, we add the ViewModel and the _PageContainer_ call.
+```Swift
+import PageContainer
+
 class TestViewModel: PageContainerViewModel {
 } 
 ```
-```
+```Swift
+import PageContainer
+
 struct TestPageView: View {
     @StateObject private var viewModel = TestViewModel()
     var body: some View {
         PageContainer(viewModel) {
-            // <- Тут ваша view (контент)
+            // <- Here is your content
         }
     }
 }
 ```
-**Пример вывода LoadingView.**
-```
+
+**LoadingView example**
+```Swift
 class TestViewModel: PageContainerViewModel {
     func loadSomeData() {
-        showLoading() // показываем LoadingView
+        showLoading() // showing LoadingView
         networking.request { result in
-            // обработка данных тут
-            self.hideLoading() // скрываем LoadingView
+            // data processing here
+            self.hideLoading() // hiding LoadingView
         }
     }
 }
 ```
-```
+```Swift
 struct TestPageView: View {
     @StateObject private var viewModel = TestViewModel()
     var body: some View {
@@ -70,10 +81,28 @@ struct TestPageView: View {
 }
 ```
 
+**AlertView example**
+```Swift
+class TestViewModel: PageContainerViewModel {
+    func outputUserInfo() {
+        // possible actions and/or conditions
+        showMessage(message: "User information") {
+            // actions after closing AlertView
+        }
+    }
+}
+```
 
----
+All usage examples are here: (https://github.com/sboko83/PageContainer/tree/main/Demo)
 
-## Изменения
+
+## Changelog
+
+**0.4**
+- Added the ability to display Custom View.
+- Refactoring.
+- Editing documentation in Russian and English.
+- Demo project added.
 
 **0.3**
-- У AlertView переработана иконка, теперь ее можно задать самому.
+- The AlertView icon has been redesigned, now you can set it yourself.
