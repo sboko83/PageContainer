@@ -9,13 +9,12 @@ import SwiftUI
 
 struct CustomView: View {
     
-    var alignment: Alignment = .center
     @ObservedObject var model: PageContainerViewModel
     
     private let config = PageContainerConfig.sharedInstance
     
     var body: some View {
-        ZStack(alignment: alignment) {
+        ZStack(alignment: model.customViewAlignment) {
             Button(action: model.hideCustomView) {
                 VStack {
                     Spacer(minLength: 0.0)

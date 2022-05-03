@@ -52,8 +52,7 @@ public struct PageContainer<Content: View>: View {
             // MARK: - CustomView
             
             if viewModel.hasCustomView {
-                CustomView(alignment: .bottomLeading,
-                           model: viewModel)
+                CustomView(model: viewModel)
             }
         }
     }
