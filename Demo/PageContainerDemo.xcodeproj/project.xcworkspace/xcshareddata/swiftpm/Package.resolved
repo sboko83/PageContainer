@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "pagecontainer",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/sboko83/PageContainer",
+      "state" : {
+        "branch" : "main",
+        "revision" : "97ddd60c2e3036fab1c52b6b16ec5fe3c649bcba"
+      }
+    }
+  ],
+  "version" : 2
+}
