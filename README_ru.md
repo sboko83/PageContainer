@@ -1,14 +1,15 @@
 # PageContainer
 [![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-_PageContainer_ реализует простой способ вывода на экран AlertView, ActionSheetView и т.п.
-Контейнер страницы располагается на самом верхнем уровне view. Не нужно создавать state-переменные и прочее. Показ осуществляется через вызов методов ViewModel. Это удобно когда у вас в приложении много экранов, а также, когда нужно чтобы view выглядели нестандартно.
-Выводимые view можно модифицировать при помощи _PageContainerConfig_ (singleton). Изменять можно цвет фона, цвет текста, кнопок, рамок, радиус скругления и прочее.
+_PageContainer_ реализует простой способ вывода на экран AlertView, ActionSheetView и т.п.<br />
+Контейнер страницы располагается на самом верхнем уровне view. Не нужно создавать state-переменные и прочее. Показ осуществляется через вызов методов ViewModel. Это удобно когда у вас в приложении много экранов, а также, когда нужно чтобы view выглядели нестандартно.<br />
+Выводимые view можно модифицировать при помощи _PageContainerConfig_ (singleton). Изменять можно цвет фона, цвет текста, кнопок, рамок, радиус скругления и прочее.<br />
 
-LoadingView блокирует экран и отображает информацию, в центре экрана, о то что происходит загрузка.
-AlertView выводит в центре экрана информацию: иконку, заголовок, текст и кнопку OK.
-ActionSheetView выводит в центре экрана: заголовок, тело (другое view, опционально) и массив кнопок.
-BottomButtonsView выводит внизу экрана: заголовок (опционально) и массив кнопок.
+LoadingView блокирует экран и отображает информацию, в центре экрана, о то что происходит загрузка.<br />
+AlertView выводит в центре экрана информацию: иконку, заголовок, текст и кнопку OK.<br />
+ActionSheetView выводит в центре экрана: заголовок, тело (другое view, опционально) и массив кнопок.<br />
+BottomButtonsView выводит внизу экрана: заголовок (опционально) и массив кнопок.<br />
 
 
 ## Требования
@@ -19,22 +20,22 @@ BottomButtonsView выводит внизу экрана: заголовок (о
 
 **Swift Package Manager**
 
-В Xcode:
-File - Swift Packages - Add Package Dependency...
-Ссылка на репозиторий https://github.com/sboko83/PageContainer
+В Xcode:<br />
+* File - Swift Packages - Add Package Dependency...
+* Ссылка на репозиторий https://github.com/sboko83/PageContainer
 
 **Ручная установка**
 
-Проект не имеет внешних зависимостей.
-Если необходимо добавить PageContainer к другому проекту, то нужно скопировать папку _PageContainer_ в ваш проект с опциями "Copy items is needed" и "Create groups".
+Проект не имеет внешних зависимостей.<br />
+Если необходимо добавить PageContainer к другому проекту, то нужно скопировать папку _PageContainer_ в ваш проект с опциями "Copy items is needed" и "Create groups".<br />
 
 
 ## Примеры использования
 
 **Основные действия**
-Перед использованием необходимо импортировать модуль.
-Нужно создать ViewModel и наследовать ее от _PageContainerViewModel_.
-В корневом View, которое отвечает за весь экран добавляем ViewModel и вызов _PageContainer_.
+Перед использованием необходимо импортировать модуль.<br />
+Нужно создать ViewModel и наследовать ее от _PageContainerViewModel_.<br />
+В корневом View, которое отвечает за весь экран добавляем ViewModel и вызов _PageContainer_.<br />
 ```Swift
 import PageContainer
 
@@ -56,6 +57,8 @@ struct TestPageView: View {
 
 **Пример вывода LoadingView**
 ```Swift
+import PageContainer
+
 class TestViewModel: PageContainerViewModel {
     func loadSomeData() {
         showLoading() // показываем LoadingView
@@ -67,6 +70,8 @@ class TestViewModel: PageContainerViewModel {
 }
 ```
 ```Swift
+import PageContainer
+
 struct TestPageView: View {
     @StateObject private var viewModel = TestViewModel()
     var body: some View {
@@ -81,6 +86,8 @@ struct TestPageView: View {
 
 **Пример вывода AlertView**
 ```Swift
+import PageContainer
+
 class TestViewModel: PageContainerViewModel {
     func outputUserInfo() {
         // возможные действия и/или условия
@@ -91,6 +98,8 @@ class TestViewModel: PageContainerViewModel {
 }
 ```
 ```Swift
+import PageContainer
+
 struct TestPageView: View {
     @StateObject private var viewModel = TestViewModel()
     var body: some View {
