@@ -21,7 +21,7 @@ BottomButtonsView выводит внизу экрана: заголовок (о
 
 В Xcode:
 File - Swift Packages - Add Package Dependency...
-Ссылка на репозиторий (https://github.com/sboko83/PageContainer)
+Ссылка на репозиторий https://github.com/sboko83/PageContainer
 
 **Ручная установка**
 
@@ -90,8 +90,20 @@ class TestViewModel: PageContainerViewModel {
     }
 }
 ```
+```Swift
+struct TestPageView: View {
+    @StateObject private var viewModel = TestViewModel()
+    var body: some View {
+        PageContainer(viewModel) {
+            Button(action: { viewModel.outputUserInfo() }) {
+                Text("Show user info")
+            }
+        }
+    }
+}
+```
 
-Все примеры использования есть тут: (https://github.com/sboko83/PageContainer/tree/main/Demo)
+Все примеры использования есть тут: [Demo проект](https://github.com/sboko83/PageContainer/tree/main/Demo)
 
 
 ## Изменения

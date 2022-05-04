@@ -23,7 +23,7 @@ Bottom Buttons View displays at the bottom of the screen: the title (optional) a
 
 In Xcode:
 File - Swift Packages - Add Package Dependency...
-Use the URL (https://github.com/sboko83/PageContainer)
+Use the URL https://github.com/sboko83/PageContainer
 
 **Manually**
 
@@ -92,11 +92,23 @@ class TestViewModel: PageContainerViewModel {
     }
 }
 ```
+```Swift
+struct TestPageView: View {
+    @StateObject private var viewModel = TestViewModel()
+    var body: some View {
+        PageContainer(viewModel) {
+            Button(action: { viewModel.outputUserInfo() }) {
+                Text("Show user info")
+            }
+        }
+    }
+}
+```
 
-All usage examples are here: (https://github.com/sboko83/PageContainer/tree/main/Demo)
+All usage examples are here: [Demo folder](https://github.com/sboko83/PageContainer/tree/main/Demo)
 
 
-## Changelog
+## Change log
 
 **0.4**
 - Added the ability to display Custom View.
