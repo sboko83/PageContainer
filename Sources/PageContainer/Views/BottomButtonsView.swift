@@ -60,6 +60,7 @@ struct BottomButtonsView: View {
                                                             color: config.color.bottomButtons.border,
                                                             backgroundColor: config.color.bottomButtons.background))
             }
+            .padding([.leading, .trailing, .bottom], -config.size.border)
             .background(Color.clear)
             .edgesIgnoringSafeArea(.bottom)
         }
