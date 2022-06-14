@@ -29,7 +29,7 @@ struct LoadingView: View {
             .cornerRadius(config.cornerRadius.base)
             .conditionalModifier(config.border.loading,
                                  PageContainerBorder(cornerRadius: config.cornerRadius.base,
-                                                     width: 1.0,
+                                                     width: config.size.border,
                                                      color: config.color.loading.border))
             .padding(.bottom, 40.0)
         }

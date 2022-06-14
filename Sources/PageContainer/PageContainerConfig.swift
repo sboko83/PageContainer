@@ -204,9 +204,12 @@ open class PageContainerConfig {
     
     public struct Sizes {
         
+        public var border: CGFloat
         public var alertMinWidth: CGFloat
         
-        public init(alertMinWidth: CGFloat = 120.0) {
+        public init(border: CGFloat = 1.0,
+                    alertMinWidth: CGFloat = 120.0) {
+            self.border = border
             self.alertMinWidth = alertMinWidth
         }
     }

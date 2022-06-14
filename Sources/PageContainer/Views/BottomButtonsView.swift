@@ -56,7 +56,7 @@ struct BottomButtonsView: View {
                 .modifier(ThemeTopCornersModifier(cornerRadius: config.cornerRadius.base))
                 .conditionalModifier(config.border.bottomButtons,
                                      PageContainerTopBorder(cornerRadius: config.cornerRadius.base,
-                                                            width: 1.0,
+                                                            width: config.size.border,
                                                             color: config.color.bottomButtons.border,
                                                             backgroundColor: config.color.bottomButtons.background))
             }

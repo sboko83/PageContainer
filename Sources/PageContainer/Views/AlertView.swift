@@ -59,7 +59,7 @@ struct AlertView: View {
                     .cornerRadius(config.cornerRadius.base)
                     .conditionalModifier(config.border.alert,
                                          PageContainerBorder(cornerRadius: config.cornerRadius.base,
-                                                             width: 1.0,
+                                                             width: config.size.border,
                                                              color: config.color.alert.border))
                     .padding()
                 }

@@ -49,7 +49,7 @@ struct ActionSheetView: View {
             .cornerRadius(config.cornerRadius.base)
             .conditionalModifier(config.border.actionSheet,
                                  PageContainerBorder(cornerRadius: config.cornerRadius.base,
-                                                     width: 1.0,
+                                                     width: config.size.border,
                                                      color: config.color.actionSheet.border))
             .padding(32.0)
         }
