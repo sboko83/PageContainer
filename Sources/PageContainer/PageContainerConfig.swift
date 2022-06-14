@@ -22,6 +22,24 @@ open class PageContainerConfig {
     
     // MARK: - Methods
     
+    public func setAlwaysDark() {
+        allBackgrounds(color: Color.black)
+        allTexts(color: Color.white)
+        allBorders(color: Color(UIColor.darkGray))
+        allBordersVisible(true)
+    }
+    
+    public func allTexts(color: Color) {
+        self.color.loading.text = color
+        self.color.alert.text = color
+        self.color.actionSheet.title = color
+        self.color.actionSheet.buttonText = color
+        self.color.actionSheet.buttonSelectedText = color
+        self.color.bottomButtons.title = color
+        self.color.bottomButtons.buttonText = color
+        self.color.bottomButtons.buttonSelectedText = color
+    }
+    
     public func allBackgrounds(color: Color) {
         self.color.loading.background = color
         self.color.alert.background = color
@@ -34,6 +52,13 @@ open class PageContainerConfig {
         border.actionSheet = state
         border.bottomButtons = state
         border.loading = state
+    }
+    
+    public func allBorders(color: Color) {
+        self.color.loading.border = color
+        self.color.alert.border = color
+        self.color.actionSheet.border = color
+        self.color.bottomButtons.border = color
     }
     
     public func restoreDefaults() {
@@ -142,12 +167,25 @@ open class PageContainerConfig {
             public var title: Color
             public var border: Color
             
+            public var buttonText: Color
+            public var buttonBackground: Color
+            public var buttonSelectedText: Color
+            public var buttonSelectedBackground: Color
+            
             public init(background: Color = Color(UIColor.systemBackground),
-                          title: Color = Color(UIColor.label),
-                          border: Color = Color(UIColor.label)) {
+                        title: Color = Color(UIColor.label),
+                        border: Color = Color(UIColor.label),
+                        buttonText: Color = Color(UIColor.label),
+                        buttonBackground: Color = Color(UIColor.systemGray4),
+                        buttonSelectedText: Color = Color(UIColor.label),
+                        buttonSelectedBackground: Color = .accentColor) {
                 self.background = background
                 self.title = title
                 self.border = border
+                self.buttonText = buttonText
+                self.buttonBackground = buttonBackground
+                self.buttonSelectedText = buttonSelectedText
+                self.buttonSelectedBackground = buttonSelectedBackground
             }
         }
     }
