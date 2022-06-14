@@ -43,7 +43,7 @@ struct BottomButtonsView: View {
                                 Button(action: { buttonPressHandler(oneButton) }) {
                                     Text(oneButton.title)
                                 }
-                                .buttonStyle(ActionSheetButtonStyle(selected: oneButton.selected))
+                                .buttonStyle(BottomButtonsButtonStyle(selected: oneButton.selected))
                                 .frame(width: bottomButtonWidth)
                                 .padding(.bottom)
                                 Spacer(minLength: 0.0)
