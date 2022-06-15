@@ -31,6 +31,7 @@ open class PageContainerConfig {
     
     public func allTexts(color: Color) {
         self.color.loading.text = color
+        self.color.alert.title = color
         self.color.alert.text = color
         self.color.actionSheet.title = color
         self.color.actionSheet.buttonText = color
