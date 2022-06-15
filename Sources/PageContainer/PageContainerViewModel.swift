@@ -12,6 +12,8 @@ open class PageContainerViewModel: ObservableObject {
     
     public init() {}
     
+    private let config = PageContainerConfig.sharedInstance
+    
     // MARK: - ActionSheet
     
     @Published var hasActionSheet: Bool = false
@@ -25,7 +27,7 @@ open class PageContainerViewModel: ObservableObject {
         actionSheetBody = AnyView(EmptyView())
         actionSheetButtons = buttons
         
-        withAnimation(.easeIn) {
+        withAnimation(config.animations.actionSheet.show) {
             self.hasActionSheet = true
         }
     }
@@ -37,13 +39,13 @@ open class PageContainerViewModel: ObservableObject {
         actionSheetBody = body
         actionSheetButtons = buttons
         
-        withAnimation(.easeIn) {
+        withAnimation(config.animations.actionSheet.show) {
             self.hasActionSheet = true
         }
     }
     
     public func hideActionSheet() {
-        withAnimation(.easeOut(duration: 0.5)) {
+        withAnimation(config.animations.actionSheet.hide) {
             self.hasActionSheet = false
         }
         
@@ -102,13 +104,13 @@ open class PageContainerViewModel: ObservableObject {
         alertIconColor = iconColor
         alertCompletion = completion
         
-        withAnimation(.easeIn) {
+        withAnimation(config.animations.alert.show) {
             self.hasAlert = true
         }
     }
     
     public func hideAlert() {
-        withAnimation(.easeOut(duration: 0.5)) {
+        withAnimation(config.animations.alert.hide) {
             self.hasAlert = false
         }
         
@@ -127,6 +129,7 @@ open class PageContainerViewModel: ObservableObject {
     @Published var bottomButtonsTitle: String = ""
     @Published var bottomButtonsButtons: [ActionSheetButton] = []
     
+    
     public func showBottomButtons(buttons: [ActionSheetButton]) {
         showBottomButtons(title: "",
                           buttons: buttons)
@@ -137,13 +140,13 @@ open class PageContainerViewModel: ObservableObject {
         bottomButtonsTitle = title
         bottomButtonsButtons = buttons
         
-        withAnimation(.easeIn) {
+        withAnimation(config.animations.bottomButtons.show) {
             self.hasBottomButtons = true
         }
     }
     
     public func hideBottomButtons() {
-        withAnimation(.easeOut(duration: 0.5)) {
+        withAnimation(config.animations.bottomButtons.hide) {
             self.hasBottomButtons = false
         }
         
@@ -159,13 +162,13 @@ open class PageContainerViewModel: ObservableObject {
     
     
     public func showLoading() {
-        withAnimation(.easeIn) {
+        withAnimation(config.animations.loading.show) {
             self.isLoading = true
         }
     }
     
     public func hideLoading() {
-        withAnimation(.easeOut) {
+        withAnimation(config.animations.loading.hide) {
             self.isLoading = false
         }
     }
@@ -182,7 +185,7 @@ open class PageContainerViewModel: ObservableObject {
         customView = custom
         customViewAlignment = alignment
         
-        withAnimation(.easeIn) {
+        withAnimation(config.animations.customView.show) {
             self.hasCustomView = true
         }
     }
@@ -191,7 +194,7 @@ open class PageContainerViewModel: ObservableObject {
         customView = AnyView(EmptyView())
         customViewAlignment = .center
         
-        withAnimation(.easeOut) {
+        withAnimation(config.animations.customView.hide) {
             self.hasCustomView = false
         }
     }

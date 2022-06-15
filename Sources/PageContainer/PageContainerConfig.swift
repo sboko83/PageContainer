@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-//typealias PCConfig = PageContainerConfig
-
 open class PageContainerConfig {
     
     public static let sharedInstance = PageContainerConfig()
@@ -19,6 +17,7 @@ open class PageContainerConfig {
     public var cornerRadius = CornerRadius()
     public var size = Sizes()
     public var strings = Strings()
+    public var animations = Animations()
     
     // MARK: - Methods
     
@@ -223,6 +222,39 @@ open class PageContainerConfig {
                     stringBtnOK: String = "OK") {
             self.stringLoading = stringLoading
             self.stringBtnOK = stringBtnOK
+        }
+    }
+    
+    public struct Animations {
+        
+        public struct Parts {
+            
+            public var show: Animation?
+            public var hide: Animation?
+            
+            public init(show: Animation? = .easeIn,
+                        hide: Animation? = .easeOut(duration: 0.5)) {
+                self.show = show
+                self.hide = hide
+            }
+        }
+        
+        public var loading: Parts
+        public var alert: Parts
+        public var actionSheet: Parts
+        public var bottomButtons: Parts
+        public var customView: Parts
+        
+        public init(loading: Parts = Parts(),
+                    alert: Parts = Parts(),
+                    actionSheet: Parts = Parts(),
+                    bottomButtons: Parts = Parts(),
+                    customView: Parts = Parts()) {
+            self.loading = loading
+            self.alert = alert
+            self.actionSheet = actionSheet
+            self.bottomButtons = bottomButtons
+            self.customView = customView
         }
     }
     
