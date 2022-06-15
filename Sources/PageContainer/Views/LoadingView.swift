@@ -18,7 +18,8 @@ struct LoadingView: View {
             
             VStack {
                 Text(config.strings.stringLoading)
-                    .textStyle(LoadingTextStyle())
+                    .textStyle(TextStyle(font: config.fonts.loading,
+                                         color: config.color.loading.text))
                     .multilineTextAlignment(.center)
                     .padding(.bottom)
                 ActivityIndicatorView(isAnimating: true, style: .medium,

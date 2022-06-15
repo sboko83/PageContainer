@@ -33,7 +33,8 @@ struct BottomButtonsView: View {
                     VStack(spacing: 0) {
                         if !model.bottomButtonsTitle.isEmpty {
                             Text(model.bottomButtonsTitle)
-                                .textStyle(BottomButtonsTitleStyle())
+                                .textStyle(TextStyle(font: config.fonts.bottomButtons.title,
+                                                     color: config.color.bottomButtons.title))
                                 .padding(.bottom)
                                 .padding(.horizontal, 32.0)
                         }

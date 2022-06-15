@@ -38,13 +38,15 @@ struct AlertView: View {
                         
                         if !model.alertTitle.isEmpty {
                             Text(model.alertTitle)
-                                .textStyle(AlertTitleStyle())
+                                .textStyle(TextStyle(font: config.fonts.alert.title,
+                                                     color: config.color.alert.title))
                                 .padding(.bottom, 8.0)
                         }
                         
                         if !model.alertText.isEmpty {
                             Text(model.alertText)
-                                .textStyle(AlertTextStyle())
+                                .textStyle(TextStyle(font: config.fonts.alert.text,
+                                                     color: config.color.alert.text))
                         }
                         
                         Button(action: buttonPressed) {

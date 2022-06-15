@@ -30,7 +30,8 @@ struct ActionSheetView: View {
             VStack(spacing: 0) {
                 if !model.actionSheetTitle.isEmpty {
                     Text(model.actionSheetTitle)
-                        .textStyle(ActionSheetTitleStyle())
+                        .textStyle(TextStyle(font: config.fonts.actionSheet.title,
+                                             color: config.color.actionSheet.title))
                         .padding(.bottom, 8.0)
                 }
                 

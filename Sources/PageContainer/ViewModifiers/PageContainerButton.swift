@@ -7,6 +7,22 @@
 
 import SwiftUI
 
+struct AlertViewButtonStyle: ButtonStyle {
+    
+    private let pcConfig = PageContainerConfig.sharedInstance
+    
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .modifier(TextStyle(font: pcConfig.fonts.alert.buttonText,
+                                color: pcConfig.color.alert.buttonText))
+            .padding(.horizontal, 20.0)
+            .padding(.vertical, 8.0)
+            .background(pcConfig.color.alert.buttonBackground.cornerRadius(pcConfig.cornerRadius.button))
+            .scaleEffect(configuration.isPressed ? 0.96 : 1.0)
+    }
+    
+}
+
 struct ActionSheetButtonStyle: ButtonStyle {
     
     let selected: Bool
@@ -17,9 +33,7 @@ struct ActionSheetButtonStyle: ButtonStyle {
         HStack {
             Spacer(minLength: 0.0)
             configuration.label
-                .modifier(TextStyle(size: selected ? 18.0 : 16.0,
-                                    weight: selected ? .bold : .semibold,
-                                    color: labelColor))
+                .modifier(TextStyle(font: labelFont, color: labelColor))
                 .padding(.vertical, 8.0)
             Spacer(minLength: 0.0)
         }
@@ -37,21 +51,9 @@ struct ActionSheetButtonStyle: ButtonStyle {
         selected ? pcConfig.color.actionSheet.buttonSelectedBackground : pcConfig.color.actionSheet.buttonBackground
     }
     
-}
-
-struct AlertViewButtonStyle: ButtonStyle {
-    
-    private let pcConfig = PageContainerConfig.sharedInstance
-    
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .modifier(AlertButtonStyle())
-            .padding(.horizontal, 20.0)
-            .padding(.vertical, 8.0)
-            .background(pcConfig.color.alert.buttonBackground.cornerRadius(pcConfig.cornerRadius.button))
-            .scaleEffect(configuration.isPressed ? 0.96 : 1.0)
+    private var labelFont: Font {
+        selected ? pcConfig.fonts.actionSheet.buttonSelectedText : pcConfig.fonts.actionSheet.buttonText
     }
-    
 }
 
 struct BottomButtonsButtonStyle: ButtonStyle {
@@ -64,9 +66,7 @@ struct BottomButtonsButtonStyle: ButtonStyle {
         HStack {
             Spacer(minLength: 0.0)
             configuration.label
-                .modifier(TextStyle(size: selected ? 18.0 : 16.0,
-                                    weight: selected ? .bold : .semibold,
-                                    color: labelColor))
+                .modifier(TextStyle(font: labelFont, color: labelColor))
                 .padding(.vertical, 8.0)
             Spacer(minLength: 0.0)
         }
@@ -84,4 +84,7 @@ struct BottomButtonsButtonStyle: ButtonStyle {
         selected ? pcConfig.color.bottomButtons.buttonSelectedBackground : pcConfig.color.bottomButtons.buttonBackground
     }
     
+    private var labelFont: Font {
+        selected ? pcConfig.fonts.bottomButtons.buttonSelectedText : pcConfig.fonts.bottomButtons.buttonText
+    }
 }

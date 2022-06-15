@@ -18,6 +18,7 @@ open class PageContainerConfig {
     public var size = Sizes()
     public var strings = Strings()
     public var animations = Animations()
+    public var fonts = Fonts()
     
     // MARK: - Methods
     
@@ -66,6 +67,8 @@ open class PageContainerConfig {
         cornerRadius = CornerRadius()
         size = Sizes()
         strings = Strings()
+        animations = Animations()
+        fonts = Fonts()
     }
     
     // MARK: - Default values
@@ -113,6 +116,7 @@ open class PageContainerConfig {
         public struct Alert {
             
             public var background: Color
+            public var title: Color
             public var text: Color
             public var border: Color
             
@@ -120,11 +124,13 @@ open class PageContainerConfig {
             public var buttonBackground: Color
             
             internal init(background: Color = Color(UIColor.systemBackground),
+                          title: Color = Color(UIColor.label),
                           text: Color = Color(UIColor.label),
                           border: Color = Color(UIColor.label),
                           buttonText: Color = Color(UIColor.label),
                           buttonBackground: Color = Color(UIColor.systemGray4)) {
                 self.background = background
+                self.title = title
                 self.text = text
                 self.border = border
                 self.buttonText = buttonText
@@ -255,6 +261,59 @@ open class PageContainerConfig {
             self.actionSheet = actionSheet
             self.bottomButtons = bottomButtons
             self.customView = customView
+        }
+    }
+    
+    public struct Fonts {
+        
+        public var loading: Font = Font.system(size: 16.0, weight: .bold)
+        public var alert: Fonts.Alert = Fonts.Alert()
+        public var actionSheet: Fonts.ActionSheet = Fonts.ActionSheet()
+        public var bottomButtons: Fonts.BottomButtons = Fonts.BottomButtons()
+        
+        public struct Alert {
+            
+            public var title: Font
+            public var text: Font
+            public var buttonText: Font
+            
+            public init(title: Font = Font.system(size: 16.0, weight: .bold),
+                        text: Font = Font.system(size: 14.0, weight: .regular),
+                        buttonText: Font = Font.system(size: 14.0, weight: .medium)) {
+                self.title = title
+                self.text = text
+                self.buttonText = buttonText
+            }
+        }
+        
+        public struct ActionSheet {
+            
+            public var title: Font
+            public var buttonText: Font
+            public var buttonSelectedText: Font
+            
+            public init(title: Font = Font.system(size: 16.0, weight: .bold),
+                        buttonText: Font = Font.system(size: 16.0, weight: .semibold),
+                        buttonSelectedText: Font = Font.system(size: 18.0, weight: .bold)) {
+                self.title = title
+                self.buttonText = buttonText
+                self.buttonSelectedText = buttonSelectedText
+            }
+        }
+        
+        public struct BottomButtons {
+            
+            public var title: Font
+            public var buttonText: Font
+            public var buttonSelectedText: Font
+            
+            public init(title: Font = Font.system(size: 16.0, weight: .bold),
+                        buttonText: Font = Font.system(size: 16.0, weight: .semibold),
+                        buttonSelectedText: Font = Font.system(size: 18.0, weight: .bold)) {
+                self.title = title
+                self.buttonText = buttonText
+                self.buttonSelectedText = buttonSelectedText
+            }
         }
     }
     
