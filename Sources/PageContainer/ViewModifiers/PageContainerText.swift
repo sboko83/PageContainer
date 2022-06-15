@@ -8,9 +8,18 @@
 import SwiftUI
 
 struct TextStyle: ViewModifier {
-    var size: CGFloat = 14.0
-    var weight: Font.Weight = .regular
-    var color: Color = Color(UIColor.label)
+    
+    var size: CGFloat
+    var weight: Font.Weight
+    var color: Color
+    
+    public init(size: CGFloat = 14.0,
+                weight: Font.Weight = .regular,
+                color: Color = Color(UIColor.label)) {
+        self.size = size
+        self.weight = weight
+        self.color = color
+    }
     
     func body(content: Content) -> some View {
         return content

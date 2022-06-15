@@ -8,24 +8,41 @@
 import SwiftUI
 
 struct RoundedCorner: Shape {
-
-    var radius: CGFloat = .infinity
-    var corners: UIRectCorner = .allCorners
+    
+    var radius: CGFloat
+    var corners: UIRectCorner
+    
+    public init(radius: CGFloat = .infinity,
+                corners: UIRectCorner = .allCorners) {
+        self.radius = radius
+        self.corners = corners
+    }
 
     func path(in rect: CGRect) -> Path {
-        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        let path = UIBezierPath(roundedRect: rect,
+                                byRoundingCorners: corners,
+                                cornerRadii: CGSize(width: radius, height: radius))
         return Path(path.cgPath)
     }
 }
 
 extension View {
-    func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
-        clipShape(RoundedCorner(radius: radius, corners: corners))
+    
+    public func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
+        clipShape(RoundedCorner(radius: radius,
+                                corners: corners))
     }
+    
 }
 
 struct ThemeLeftCornersModifier: ViewModifier {
-    var cornerRadius: CGFloat = PageContainerConfig.sharedInstance.cornerRadius.base
+    
+    var cornerRadius: CGFloat
+    
+    public init(cornerRadius: CGFloat = PageContainerConfig.sharedInstance.cornerRadius.base) {
+        self.cornerRadius = cornerRadius
+    }
+    
     func body(content: Content) -> some View {
         content
             .cornerRadius(cornerRadius, corners: [.topLeft, .bottomLeft])
@@ -33,7 +50,13 @@ struct ThemeLeftCornersModifier: ViewModifier {
 }
 
 struct ThemeRightCornersModifier: ViewModifier {
-    var cornerRadius: CGFloat = PageContainerConfig.sharedInstance.cornerRadius.base
+    
+    var cornerRadius: CGFloat
+    
+    public init(cornerRadius: CGFloat = PageContainerConfig.sharedInstance.cornerRadius.base) {
+        self.cornerRadius = cornerRadius
+    }
+    
     func body(content: Content) -> some View {
         content
             .cornerRadius(cornerRadius, corners: [.topRight, .bottomRight])
@@ -41,7 +64,13 @@ struct ThemeRightCornersModifier: ViewModifier {
 }
 
 struct ThemeTopCornersModifier: ViewModifier {
-    var cornerRadius: CGFloat = PageContainerConfig.sharedInstance.cornerRadius.base
+    
+    var cornerRadius: CGFloat
+    
+    public init(cornerRadius: CGFloat = PageContainerConfig.sharedInstance.cornerRadius.base) {
+        self.cornerRadius = cornerRadius
+    }
+    
     func body(content: Content) -> some View {
         content
             .cornerRadius(cornerRadius, corners: [.topLeft, .topRight])
@@ -49,7 +78,13 @@ struct ThemeTopCornersModifier: ViewModifier {
 }
 
 struct ThemeBottomCornersModifier: ViewModifier {
-    var cornerRadius: CGFloat = PageContainerConfig.sharedInstance.cornerRadius.base
+    
+    var cornerRadius: CGFloat
+    
+    public init(cornerRadius: CGFloat = PageContainerConfig.sharedInstance.cornerRadius.base) {
+        self.cornerRadius = cornerRadius
+    }
+    
     func body(content: Content) -> some View {
         content
             .cornerRadius(cornerRadius, corners: [.bottomLeft, .bottomRight])

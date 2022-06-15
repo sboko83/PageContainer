@@ -10,8 +10,16 @@ import SwiftUI
 struct ImageSystemView: View {
     
     var name: String
-    var size: CGFloat = 26.0
-    var color: Color = Color.accentColor
+    var size: CGFloat
+    var color: Color
+    
+    public init(name: String,
+                size: CGFloat = 26.0,
+                color: Color = Color.accentColor) {
+        self.name = name
+        self.size = size
+        self.color = color
+    }
     
     var body: some View {
         Image(systemName: self.name)
