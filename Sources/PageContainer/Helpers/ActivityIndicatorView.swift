@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ActivityIndicatorView: UIViewRepresentable {
+public struct ActivityIndicatorView: UIViewRepresentable {
     
     @State var isAnimating: Bool
     var style: UIActivityIndicatorView.Style
@@ -21,13 +21,13 @@ struct ActivityIndicatorView: UIViewRepresentable {
         self.color = color
     }
 
-    func makeUIView(context: UIViewRepresentableContext<ActivityIndicatorView>) -> UIActivityIndicatorView {
+    public func makeUIView(context: UIViewRepresentableContext<ActivityIndicatorView>) -> UIActivityIndicatorView {
         let activityView = UIActivityIndicatorView(style: style)
         activityView.color = color
         return activityView
     }
 
-    func updateUIView(_ uiView: UIActivityIndicatorView, context: UIViewRepresentableContext<ActivityIndicatorView>) {
+    public func updateUIView(_ uiView: UIActivityIndicatorView, context: UIViewRepresentableContext<ActivityIndicatorView>) {
         isAnimating ? uiView.startAnimating() : uiView.stopAnimating()
     }
 }

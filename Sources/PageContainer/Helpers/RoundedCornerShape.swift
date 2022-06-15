@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct RoundedCorner: Shape {
+public struct RoundedCorner: Shape {
     
     var radius: CGFloat
     var corners: UIRectCorner
@@ -18,7 +18,7 @@ struct RoundedCorner: Shape {
         self.corners = corners
     }
 
-    func path(in rect: CGRect) -> Path {
+    public func path(in rect: CGRect) -> Path {
         let path = UIBezierPath(roundedRect: rect,
                                 byRoundingCorners: corners,
                                 cornerRadii: CGSize(width: radius, height: radius))
@@ -35,7 +35,7 @@ extension View {
     
 }
 
-struct ThemeLeftCornersModifier: ViewModifier {
+public struct ThemeLeftCornersModifier: ViewModifier {
     
     var cornerRadius: CGFloat
     
@@ -43,13 +43,13 @@ struct ThemeLeftCornersModifier: ViewModifier {
         self.cornerRadius = cornerRadius
     }
     
-    func body(content: Content) -> some View {
+    public func body(content: Content) -> some View {
         content
             .cornerRadius(cornerRadius, corners: [.topLeft, .bottomLeft])
     }
 }
 
-struct ThemeRightCornersModifier: ViewModifier {
+public struct ThemeRightCornersModifier: ViewModifier {
     
     var cornerRadius: CGFloat
     
@@ -57,13 +57,13 @@ struct ThemeRightCornersModifier: ViewModifier {
         self.cornerRadius = cornerRadius
     }
     
-    func body(content: Content) -> some View {
+    public func body(content: Content) -> some View {
         content
             .cornerRadius(cornerRadius, corners: [.topRight, .bottomRight])
     }
 }
 
-struct ThemeTopCornersModifier: ViewModifier {
+public struct ThemeTopCornersModifier: ViewModifier {
     
     var cornerRadius: CGFloat
     
@@ -71,13 +71,13 @@ struct ThemeTopCornersModifier: ViewModifier {
         self.cornerRadius = cornerRadius
     }
     
-    func body(content: Content) -> some View {
+    public func body(content: Content) -> some View {
         content
             .cornerRadius(cornerRadius, corners: [.topLeft, .topRight])
     }
 }
 
-struct ThemeBottomCornersModifier: ViewModifier {
+public struct ThemeBottomCornersModifier: ViewModifier {
     
     var cornerRadius: CGFloat
     
@@ -85,7 +85,7 @@ struct ThemeBottomCornersModifier: ViewModifier {
         self.cornerRadius = cornerRadius
     }
     
-    func body(content: Content) -> some View {
+    public func body(content: Content) -> some View {
         content
             .cornerRadius(cornerRadius, corners: [.bottomLeft, .bottomRight])
     }

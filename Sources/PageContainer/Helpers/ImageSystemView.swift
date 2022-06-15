@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ImageSystemView: View {
+public struct ImageSystemView: View {
     
     var name: String
     var size: CGFloat
@@ -21,7 +21,7 @@ struct ImageSystemView: View {
         self.color = color
     }
     
-    var body: some View {
+    public var body: some View {
         Image(systemName: self.name)
             .resizable()
             .aspectRatio(contentMode: .fit)
