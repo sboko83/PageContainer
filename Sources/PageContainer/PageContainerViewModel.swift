@@ -59,9 +59,7 @@ open class PageContainerViewModel: ObservableObject {
             self.actionSheetTitle = ""
             self.actionSheetBody = AnyView(EmptyView())
             self.actionSheetButtons = []
-            withAnimation {
-                self.lockContentState = false
-            }
+            self.lockContentState = false
         }
     }
     
@@ -130,9 +128,7 @@ open class PageContainerViewModel: ObservableObject {
             self.alertIcon = ""
             self.alertIconColor = .accentColor
             self.alertCompletion = {}
-            withAnimation {
-                self.lockContentState = false
-            }
+            self.lockContentState = false
         }
     }
     
@@ -167,9 +163,7 @@ open class PageContainerViewModel: ObservableObject {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.bottomButtonsTitle = ""
             self.bottomButtonsButtons = []
-            withAnimation {
-                self.lockContentState = false
-            }
+            self.lockContentState = false
         }
     }
     
@@ -188,6 +182,8 @@ open class PageContainerViewModel: ObservableObject {
     public func hideLoading() {
         withAnimation(config.animations.loading.hide) {
             self.isLoading = false
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.lockContentState = false
         }
     }
@@ -216,6 +212,8 @@ open class PageContainerViewModel: ObservableObject {
         
         withAnimation(config.animations.customView.hide) {
             self.hasCustomView = false
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.lockContentState = false
         }
     }

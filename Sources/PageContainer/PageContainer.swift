@@ -23,7 +23,7 @@ public struct PageContainer<Content: View>: View {
         ZStack {
             content
                 .blur(radius: blurValue)
-                .disabled(disabledState)
+                .disabled(viewModel.lockContentState)
             
             // MARK: - Alert
             
@@ -58,11 +58,11 @@ public struct PageContainer<Content: View>: View {
     }
     
     private var blurValue: CGFloat {
-        viewModel.lockContentState ? 3 : 0
-    }
-    
-    private var disabledState: Bool {
-        viewModel.lockContentState
+        (viewModel.hasAlert ||
+         viewModel.hasActionSheet ||
+         viewModel.hasBottomButtons ||
+         viewModel.isLoading ||
+         viewModel.hasCustomView) ? 3 : 0
     }
     
 }
