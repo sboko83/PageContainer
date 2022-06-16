@@ -14,6 +14,10 @@ open class PageContainerViewModel: ObservableObject {
     
     private let config = PageContainerConfig.sharedInstance
     
+    
+    @Published var lockContentState: Bool = false
+    
+    
     // MARK: - ActionSheet
     
     @Published var hasActionSheet: Bool = false
@@ -28,6 +32,7 @@ open class PageContainerViewModel: ObservableObject {
         actionSheetButtons = buttons
         
         withAnimation(config.animations.actionSheet.show) {
+            self.lockContentState = true
             self.hasActionSheet = true
         }
     }
@@ -40,6 +45,7 @@ open class PageContainerViewModel: ObservableObject {
         actionSheetButtons = buttons
         
         withAnimation(config.animations.actionSheet.show) {
+            self.lockContentState = true
             self.hasActionSheet = true
         }
     }
@@ -53,6 +59,9 @@ open class PageContainerViewModel: ObservableObject {
             self.actionSheetTitle = ""
             self.actionSheetBody = AnyView(EmptyView())
             self.actionSheetButtons = []
+            withAnimation {
+                self.lockContentState = false
+            }
         }
     }
     
@@ -105,6 +114,7 @@ open class PageContainerViewModel: ObservableObject {
         alertCompletion = completion
         
         withAnimation(config.animations.alert.show) {
+            self.lockContentState = true
             self.hasAlert = true
         }
     }
@@ -120,6 +130,9 @@ open class PageContainerViewModel: ObservableObject {
             self.alertIcon = ""
             self.alertIconColor = .accentColor
             self.alertCompletion = {}
+            withAnimation {
+                self.lockContentState = false
+            }
         }
     }
     
@@ -141,6 +154,7 @@ open class PageContainerViewModel: ObservableObject {
         bottomButtonsButtons = buttons
         
         withAnimation(config.animations.bottomButtons.show) {
+            self.lockContentState = true
             self.hasBottomButtons = true
         }
     }
@@ -153,6 +167,9 @@ open class PageContainerViewModel: ObservableObject {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.bottomButtonsTitle = ""
             self.bottomButtonsButtons = []
+            withAnimation {
+                self.lockContentState = false
+            }
         }
     }
     
@@ -163,6 +180,7 @@ open class PageContainerViewModel: ObservableObject {
     
     public func showLoading() {
         withAnimation(config.animations.loading.show) {
+            self.lockContentState = true
             self.isLoading = true
         }
     }
@@ -170,6 +188,7 @@ open class PageContainerViewModel: ObservableObject {
     public func hideLoading() {
         withAnimation(config.animations.loading.hide) {
             self.isLoading = false
+            self.lockContentState = false
         }
     }
     
@@ -186,6 +205,7 @@ open class PageContainerViewModel: ObservableObject {
         customViewAlignment = alignment
         
         withAnimation(config.animations.customView.show) {
+            self.lockContentState = true
             self.hasCustomView = true
         }
     }
@@ -196,6 +216,7 @@ open class PageContainerViewModel: ObservableObject {
         
         withAnimation(config.animations.customView.hide) {
             self.hasCustomView = false
+            self.lockContentState = false
         }
     }
 }

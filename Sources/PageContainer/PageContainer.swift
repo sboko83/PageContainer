@@ -58,19 +58,11 @@ public struct PageContainer<Content: View>: View {
     }
     
     private var blurValue: CGFloat {
-        (viewModel.hasAlert ||
-         viewModel.hasActionSheet ||
-         viewModel.hasBottomButtons ||
-         viewModel.isLoading ||
-         viewModel.hasCustomView) ? 3 : 0
+        viewModel.lockContentState ? 3 : 0
     }
     
     private var disabledState: Bool {
-        viewModel.hasAlert ||
-        viewModel.hasActionSheet ||
-        viewModel.hasBottomButtons ||
-        viewModel.isLoading ||
-        viewModel.hasCustomView
+        viewModel.lockContentState
     }
     
 }
