@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct AlertViewButtonStyle: ButtonStyle {
+public struct AlertViewButtonStyle: ButtonStyle {
     
     private let pcConfig = PageContainerConfig.sharedInstance
     
-    func makeBody(configuration: Configuration) -> some View {
+    public func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .modifier(TextStyle(font: pcConfig.fonts.alert.buttonText,
                                 color: pcConfig.color.alert.buttonText))
@@ -23,13 +23,17 @@ struct AlertViewButtonStyle: ButtonStyle {
     
 }
 
-struct ActionSheetButtonStyle: ButtonStyle {
+public struct ActionSheetButtonStyle: ButtonStyle {
     
     let selected: Bool
     
+    public init(selected: Bool) {
+        self.selected = selected
+    }
+    
     private let pcConfig = PageContainerConfig.sharedInstance
     
-    func makeBody(configuration: Configuration) -> some View {
+    public func makeBody(configuration: Configuration) -> some View {
         HStack {
             Spacer(minLength: 0.0)
             configuration.label
@@ -56,13 +60,17 @@ struct ActionSheetButtonStyle: ButtonStyle {
     }
 }
 
-struct BottomButtonsButtonStyle: ButtonStyle {
+public struct BottomButtonsButtonStyle: ButtonStyle {
     
     let selected: Bool
     
+    public init(selected: Bool) {
+        self.selected = selected
+    }
+    
     private let pcConfig = PageContainerConfig.sharedInstance
     
-    func makeBody(configuration: Configuration) -> some View {
+    public func makeBody(configuration: Configuration) -> some View {
         HStack {
             Spacer(minLength: 0.0)
             configuration.label

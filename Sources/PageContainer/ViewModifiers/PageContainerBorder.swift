@@ -7,13 +7,21 @@
 
 import SwiftUI
 
-struct PageContainerBorder: ViewModifier {
+public struct PageContainerBorder: ViewModifier {
     
-    var cornerRadius: CGFloat = PageContainerConfig.sharedInstance.cornerRadius.base
-    var width: CGFloat = 1.0
-    var color: Color = .black
+    var cornerRadius: CGFloat
+    var width: CGFloat
+    var color: Color
     
-    func body(content: Content) -> some View {
+    public init(cornerRadius: CGFloat = PageContainerConfig.sharedInstance.cornerRadius.base,
+                  width: CGFloat = 1.0,
+                  color: Color = .black) {
+        self.cornerRadius = cornerRadius
+        self.width = width
+        self.color = color
+    }
+    
+    public func body(content: Content) -> some View {
         content
             .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
             .overlay(RoundedRectangle(cornerRadius: cornerRadius)
@@ -23,14 +31,24 @@ struct PageContainerBorder: ViewModifier {
     
 }
 
-struct PageContainerTopBorder: ViewModifier {
+public struct PageContainerTopBorder: ViewModifier {
     
-    var cornerRadius: CGFloat = PageContainerConfig.sharedInstance.cornerRadius.base
-    var width: CGFloat = 1.0
-    var color: Color = .black
-    var backgroundColor: Color = Color(UIColor.systemBackground)
+    var cornerRadius: CGFloat
+    var width: CGFloat
+    var color: Color
+    var backgroundColor: Color
     
-    func body(content: Content) -> some View {
+    public init(cornerRadius: CGFloat = PageContainerConfig.sharedInstance.cornerRadius.base,
+                width: CGFloat = 1.0,
+                color: Color = .black,
+                backgroundColor: Color = Color(UIColor.systemBackground)) {
+        self.cornerRadius = cornerRadius
+        self.width = width
+        self.color = color
+        self.backgroundColor = backgroundColor
+    }
+    
+    public func body(content: Content) -> some View {
         content
             .clipShape(RoundedCorner(radius: cornerRadius, corners: [.topLeft, .topRight]))
             .overlay(RoundedCorner(radius: cornerRadius, corners: [.topLeft, .topRight])
