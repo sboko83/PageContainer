@@ -16,7 +16,7 @@ public struct AlertViewButtonStyle: ButtonStyle {
             .modifier(TextStyle(font: pcConfig.fonts.alert.buttonText,
                                 color: pcConfig.color.alert.buttonText))
             .padding(.horizontal, 20.0)
-            .padding(.vertical, 8.0)
+            .padding(.vertical, 10.0)
             .background(pcConfig.color.alert.buttonBackground.cornerRadius(pcConfig.cornerRadius.button))
             .scaleEffect(configuration.isPressed ? 0.96 : 1.0)
     }
@@ -38,7 +38,7 @@ public struct ActionSheetButtonStyle: ButtonStyle {
             Spacer(minLength: 0.0)
             configuration.label
                 .modifier(TextStyle(font: labelFont, color: labelColor))
-                .padding(.vertical, 8.0)
+                .padding(.vertical, selected ? 8.0 : 10.0)
             Spacer(minLength: 0.0)
         }
         .padding(.horizontal, 32.0)
@@ -75,7 +75,7 @@ public struct BottomButtonsButtonStyle: ButtonStyle {
             Spacer(minLength: 0.0)
             configuration.label
                 .modifier(TextStyle(font: labelFont, color: labelColor))
-                .padding(.vertical, 8.0)
+                .padding(.vertical, selected ? 8.0 : 10.0)
             Spacer(minLength: 0.0)
         }
         .padding(.horizontal, 32.0)
