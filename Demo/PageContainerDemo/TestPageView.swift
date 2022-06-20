@@ -16,39 +16,93 @@ struct TestPageView: View {
     var body: some View {
         PageContainer(viewModel) {
             VStack(spacing: 0) {
-                Button(action: viewModel.testLoading) {
-                    Text("Show Loading")
+                HStack(spacing: 0) {
+                    TableCellView {
+                        Text("PageContainer:").bold()
+                    }
+                    TableCellView {
+                        Text("System views:").bold()
+                    }
                 }
-                .padding(.bottom, 24.0)
+                .padding(.bottom, 8.0)
                 
-                Button(action: viewModel.testSimpleMessage) {
-                    Text("Show Info")
+                HStack(spacing: 0) {
+                    TableCellView {
+                        Button(action: viewModel.testLoading) {
+                            Text("Loading")
+                        }
+                    }
+                    TableCellView {
+                        Text("---")
+                    }
                 }
-                .padding(.bottom, 24.0)
                 
-                Button(action: viewModel.testError) {
-                    Text("Show Error")
+                HStack(spacing: 0) {
+                    TableCellView {
+                        Button(action: viewModel.testSimpleMessage) {
+                            Text("Alert info")
+                        }
+                    }
+                    TableCellView {
+                        Text("---")
+                    }
                 }
-                .padding(.bottom, 24.0)
                 
-                Button(action: viewModel.testAlert) {
-                    Text("Show simple Alert")
+                HStack(spacing: 0) {
+                    TableCellView {
+                        Button(action: viewModel.testError) {
+                            Text("Alert error")
+                        }
+                    }
+                    TableCellView {
+                        Text("---")
+                    }
                 }
-                .padding(.bottom, 24.0)
                 
-                Button(action: { viewModel.testActionSheet(body: AnyView(actionSheetBody)) }) {
-                    Text("Show ActionSheet")
+                HStack(spacing: 0) {
+                    TableCellView {
+                        Button(action: viewModel.testAlert) {
+                            Text("Alert")
+                        }
+                    }
+                    TableCellView {
+                        Text("---")
+                    }
                 }
-                .padding(.bottom, 24.0)
                 
-                Button(action: viewModel.testBottomButtons) {
-                    Text("Show BottomButtons")
+                HStack(spacing: 0) {
+                    TableCellView {
+                        Button(action: { viewModel.testActionSheet(body: AnyView(actionSheetBody)) }) {
+                            Text("ActionSheet")
+                        }
+                    }
+                    TableCellView {
+                        Text("---")
+                    }
                 }
-                .padding(.bottom, 24.0)
                 
-                Button(action: { viewModel.testCustomView(AnyView(customBody)) }) {
-                    Text("Show custom view")
+                HStack(spacing: 0) {
+                    TableCellView {
+                        Button(action: viewModel.testBottomButtons) {
+                            Text("BottomButtons")
+                        }
+                    }
+                    TableCellView {
+                        Text("---")
+                    }
                 }
+                
+                HStack(spacing: 0) {
+                    TableCellView {
+                        Button(action: { viewModel.testCustomView(AnyView(customBody)) }) {
+                            Text("Custom view")
+                        }
+                    }
+                    TableCellView {
+                        Text("---")
+                    }
+                }
+                
             }
         }
     }
@@ -73,7 +127,28 @@ struct ActionSheetBodyView: View {
         VStack(alignment: .center, spacing: 0) {
             Text("ActionSheetBody:\nIncrement element: \(incrementElement)")
                 .multilineTextAlignment(.center)
+                .foregroundColor(PageContainerConfig.sharedInstance.color.actionSheet.title)
         }
+    }
+}
+
+struct TableCellView<Content: View>: View {
+    
+    let content: Content
+    
+    init(@ViewBuilder content: () -> Content) {
+        self.content = content()
+    }
+    
+    var body: some View {
+        HStack(spacing: 0) {
+            Spacer(minLength: 0.0)
+            content
+            Spacer(minLength: 0.0)
+        }
+        .padding(8.0)
+        .border(.gray, width: 1.0)
+        .padding(8.0)
     }
 }
 

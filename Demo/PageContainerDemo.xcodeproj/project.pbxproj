@@ -15,7 +15,7 @@
 		1717BE5B28134A5600D2054B /* PageContainerDemoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1717BE5A28134A5600D2054B /* PageContainerDemoUITestsLaunchTests.swift */; };
 		1717BE8C28134B5500D2054B /* TestPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1717BE8A28134B5500D2054B /* TestPageView.swift */; };
 		1717BE8D28134B5500D2054B /* TestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1717BE8B28134B5500D2054B /* TestViewModel.swift */; };
-		174C43E928217E7800FBE6F3 /* PageContainer in Frameworks */ = {isa = PBXBuildFile; productRef = 174C43E828217E7800FBE6F3 /* PageContainer */; };
+		173BEE7B2858A6890031DE3C /* PageContainer in Frameworks */ = {isa = PBXBuildFile; productRef = 173BEE7A2858A6890031DE3C /* PageContainer */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,7 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				174C43E928217E7800FBE6F3 /* PageContainer in Frameworks */,
+				173BEE7B2858A6890031DE3C /* PageContainer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,7 +157,7 @@
 			);
 			name = PageContainerDemo;
 			packageProductDependencies = (
-				174C43E828217E7800FBE6F3 /* PageContainer */,
+				173BEE7A2858A6890031DE3C /* PageContainer */,
 			);
 			productName = PageContainerDemo;
 			productReference = 1717BE3A28134A5500D2054B /* PageContainerDemo.app */;
@@ -232,7 +232,7 @@
 			);
 			mainGroup = 1717BE3128134A5500D2054B;
 			packageReferences = (
-				174C43E628217E4F00FBE6F3 /* XCRemoteSwiftPackageReference "PageContainer" */,
+				173BEE792858A6890031DE3C /* XCRemoteSwiftPackageReference "PageContainer" */,
 			);
 			productRefGroup = 1717BE3B28134A5500D2054B /* Products */;
 			projectDirPath = "";
@@ -601,7 +601,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		174C43E628217E4F00FBE6F3 /* XCRemoteSwiftPackageReference "PageContainer" */ = {
+		173BEE792858A6890031DE3C /* XCRemoteSwiftPackageReference "PageContainer" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sboko83/PageContainer";
 			requirement = {
@@ -612,9 +612,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		174C43E828217E7800FBE6F3 /* PageContainer */ = {
+		173BEE7A2858A6890031DE3C /* PageContainer */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 174C43E628217E4F00FBE6F3 /* XCRemoteSwiftPackageReference "PageContainer" */;
+			package = 173BEE792858A6890031DE3C /* XCRemoteSwiftPackageReference "PageContainer" */;
 			productName = PageContainer;
 		};
 /* End XCSwiftPackageProductDependency section */
