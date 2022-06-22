@@ -16,8 +16,8 @@ let package = Package(
         .target(
             name: "PageContainer",
             dependencies: []),
-        .testTarget(
-            name: "PageContainerTests",
-            dependencies: ["PageContainer"]),
+//        .testTarget(
+//            name: "PageContainerTests",
+//            dependencies: ["PageContainer"]),
     ]
 )
