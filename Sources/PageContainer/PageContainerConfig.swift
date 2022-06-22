@@ -19,6 +19,8 @@ open class PageContainerConfig {
     public var strings = Strings()
     public var animations = Animations()
     public var fonts = Fonts()
+    public var alignments = Alignments()
+    
     
     // MARK: - Methods
     
@@ -70,6 +72,7 @@ open class PageContainerConfig {
         strings = Strings()
         animations = Animations()
         fonts = Fonts()
+        alignments = Alignments()
     }
     
     // MARK: - Default values
@@ -315,6 +318,18 @@ open class PageContainerConfig {
                 self.buttonText = buttonText
                 self.buttonSelectedText = buttonSelectedText
             }
+        }
+    }
+    
+    public struct Alignments {
+        
+        public var actionSheet: Alignment
+        public var customView: Alignment
+        
+        public init(actionSheet: Alignment = .center,
+                    customView: Alignment = .center) {
+            self.actionSheet = actionSheet
+            self.customView = customView
         }
     }
     

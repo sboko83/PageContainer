@@ -191,14 +191,11 @@ open class PageContainerViewModel: ObservableObject {
     // MARK: - Custom view
     
     @Published var hasCustomView: Bool = false
-    @Published var customViewAlignment: Alignment = .center
     @Published var customView: AnyView = AnyView(EmptyView())
     
     
-    public func showCustomView(_ custom: AnyView,
-                               alignment:Alignment = .center) {
+    public func showCustomView(_ custom: AnyView) {
         customView = custom
-        customViewAlignment = alignment
         
         withAnimation(config.animations.customView.show) {
             self.lockContentState = true
@@ -208,7 +205,6 @@ open class PageContainerViewModel: ObservableObject {
     
     public func hideCustomView() {
         customView = AnyView(EmptyView())
-        customViewAlignment = .center
         
         withAnimation(config.animations.customView.hide) {
             self.hasCustomView = false

@@ -14,7 +14,7 @@ struct ActionSheetView: View {
     private let config = PageContainerConfig.sharedInstance
     
     var body: some View {
-        ZStack {
+        ZStack(alignment: config.alignments.actionSheet) {
             Button(action: model.hideActionSheet) {
                 VStack {
                     Spacer(minLength: 0.0)

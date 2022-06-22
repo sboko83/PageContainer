@@ -14,7 +14,7 @@ struct CustomView: View {
     private let config = PageContainerConfig.sharedInstance
     
     var body: some View {
-        ZStack(alignment: model.customViewAlignment) {
+        ZStack(alignment: config.alignments.customView) {
             Button(action: model.hideCustomView) {
                 VStack {
                     Spacer(minLength: 0.0)
