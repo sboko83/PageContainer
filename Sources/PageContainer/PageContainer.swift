@@ -10,9 +10,9 @@ import SwiftUI
 public struct PageContainer<Content: View>: View {
     
     @ObservedObject var viewModel: PageContainerViewModel
-
     private let content: Content
-
+    private let config = PageContainerConfig.sharedInstance
+    
     public init(_ containerModel: PageContainerViewModel,
                 @ViewBuilder content: () -> Content) {
         self.viewModel = containerModel
@@ -55,6 +55,7 @@ public struct PageContainer<Content: View>: View {
                 CustomView(model: viewModel)
             }
         }
+        .font(config.fonts.common)
     }
     
     private var blurValue: CGFloat {

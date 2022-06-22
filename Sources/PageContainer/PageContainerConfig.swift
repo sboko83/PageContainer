@@ -270,10 +270,24 @@ open class PageContainerConfig {
     
     public struct Fonts {
         
-        public var loading: Font = Font.system(size: 16.0, weight: .bold)
-        public var alert: Fonts.Alert = Fonts.Alert()
-        public var actionSheet: Fonts.ActionSheet = Fonts.ActionSheet()
-        public var bottomButtons: Fonts.BottomButtons = Fonts.BottomButtons()
+        public var common: Font
+        
+        public var loading: Font
+        public var alert: Fonts.Alert
+        public var actionSheet: Fonts.ActionSheet
+        public var bottomButtons: Fonts.BottomButtons
+        
+        public init(common: Font = Font.system(size: 14.0, weight: .regular),
+                    loading: Font = Font.system(size: 16.0, weight: .bold),
+                    alert: Fonts.Alert = Fonts.Alert(),
+                    actionSheet: Fonts.ActionSheet = Fonts.ActionSheet(),
+                    bottomButtons: Fonts.BottomButtons = Fonts.BottomButtons()) {
+            self.common = common
+            self.loading = loading
+            self.alert = alert
+            self.actionSheet = actionSheet
+            self.bottomButtons = bottomButtons
+        }
         
         public struct Alert {
             
