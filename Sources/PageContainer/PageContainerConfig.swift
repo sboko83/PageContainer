@@ -97,10 +97,20 @@ open class PageContainerConfig {
     
     public struct Colors {
         
-        public var loading = Loading()
-        public var alert = Alert()
-        public var actionSheet = ActionSheet()
-        public var bottomButtons = BottomButtons()
+        public var loading: Colors.Loading
+        public var alert: Colors.Alert
+        public var actionSheet: Colors.ActionSheet
+        public var bottomButtons: Colors.BottomButtons
+        
+        public init(loading: Colors.Loading = Loading(),
+                    alert: Colors.Alert = Alert(),
+                    actionSheet: Colors.ActionSheet = ActionSheet(),
+                    bottomButtons: Colors.BottomButtons = BottomButtons()) {
+            self.loading = loading
+            self.alert = alert
+            self.actionSheet = actionSheet
+            self.bottomButtons = bottomButtons
+        }
         
         public struct Loading {
             
@@ -127,7 +137,7 @@ open class PageContainerConfig {
             public var buttonText: Color
             public var buttonBackground: Color
             
-            internal init(background: Color = Color(UIColor.systemBackground),
+            public init(background: Color = Color(UIColor.systemBackground),
                           title: Color = Color(UIColor.label),
                           text: Color = Color(UIColor.label),
                           border: Color = Color(UIColor.label),
