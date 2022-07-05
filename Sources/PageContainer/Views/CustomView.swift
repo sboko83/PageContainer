@@ -15,19 +15,27 @@ struct CustomView: View {
     
     var body: some View {
         ZStack(alignment: config.alignments.customView) {
-            Button(action: model.hideCustomView) {
-                VStack {
-                    Spacer(minLength: 0.0)
-                    HStack {
-                        Spacer(minLength: 0.0)
-                        Text("")
-                        Spacer(minLength: 0.0)
-                    }
-                    Spacer(minLength: 0.0)
+            if model.closeCustomViewByTap {
+                Button(action: model.hideCustomView) {
+                    emptyScreen
                 }
+            } else {
+                emptyScreen
             }
             
             model.customView
+        }
+    }
+    
+    private var emptyScreen: some View {
+        VStack {
+            Spacer(minLength: 0.0)
+            HStack {
+                Spacer(minLength: 0.0)
+                EmptyView()
+                Spacer(minLength: 0.0)
+            }
+            Spacer(minLength: 0.0)
         }
     }
 }

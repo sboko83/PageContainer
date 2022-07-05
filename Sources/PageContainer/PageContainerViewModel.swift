@@ -192,9 +192,12 @@ open class PageContainerViewModel: ObservableObject {
     
     @Published var hasCustomView: Bool = false
     @Published var customView: AnyView = AnyView(EmptyView())
+    @Published var closeCustomViewByTap: Bool = true
     
     
-    public func showCustomView(_ custom: AnyView) {
+    public func showCustomView(_ custom: AnyView,
+                               closeByTap: Bool = true) {
+        closeCustomViewByTap = closeByTap
         customView = custom
         
         withAnimation(config.animations.customView.show) {
@@ -205,6 +208,7 @@ open class PageContainerViewModel: ObservableObject {
     
     public func hideCustomView() {
         customView = AnyView(EmptyView())
+        closeCustomViewByTap = true
         
         withAnimation(config.animations.customView.hide) {
             self.hasCustomView = false
