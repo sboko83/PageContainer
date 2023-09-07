@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LoadingView: View {
     
-    private let config = PageContainerConfig.sharedInstance
+    private let config = PageContainerConfig.shared
     
     var body: some View {
         ZStack {

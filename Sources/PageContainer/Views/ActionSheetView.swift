@@ -11,7 +11,7 @@ struct ActionSheetView: View {
     
     @ObservedObject var model: PageContainerViewModel
     
-    private let config = PageContainerConfig.sharedInstance
+    private let config = PageContainerConfig.shared
     
     var body: some View {
         ZStack(alignment: config.alignments.actionSheet) {

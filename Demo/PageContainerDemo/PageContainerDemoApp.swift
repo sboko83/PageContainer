@@ -22,8 +22,7 @@ struct PageContainerDemoApp: App {
     }
     
     private func setupContainerConfig() {
-        let config = PageContainerConfig.sharedInstance
-        config.setAlwaysDark()
-//        config.color.bottomButtons.border = Color.red
+        let config = PageContainerConfig.shared
+        config.setDarkStyle()
     }
 }

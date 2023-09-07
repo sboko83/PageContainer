@@ -9,7 +9,7 @@ import SwiftUI
 
 open class PageContainerConfig {
     
-    public static let sharedInstance = PageContainerConfig()
+    public static let shared = PageContainerConfig()
     private init() {}
     
     public var border = Border()
@@ -24,11 +24,26 @@ open class PageContainerConfig {
     
     // MARK: - Methods
     
-    public func setAlwaysDark() {
+    public func setDarkStyle() {
         allBackgrounds(color: Color.black)
         allTexts(color: Color.white)
         allBorders(color: Color(UIColor.darkGray))
         allBordersVisible(true)
+    }
+    
+    public func setLightStyle() {
+        restoreDefaults()
+    }
+    
+    public func restoreDefaults() {
+        border = Border()
+        color = Colors()
+        cornerRadius = CornerRadius()
+        size = Sizes()
+        strings = Strings()
+        animations = Animations()
+        fonts = Fonts()
+        alignments = Alignments()
     }
     
     public func allTexts(color: Color) {
@@ -62,17 +77,6 @@ open class PageContainerConfig {
         self.color.alert.border = color
         self.color.actionSheet.border = color
         self.color.bottomButtons.border = color
-    }
-    
-    public func restoreDefaults() {
-        border = Border()
-        color = Colors()
-        cornerRadius = CornerRadius()
-        size = Sizes()
-        strings = Strings()
-        animations = Animations()
-        fonts = Fonts()
-        alignments = Alignments()
     }
     
     // MARK: - Default values

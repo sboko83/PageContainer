@@ -9,7 +9,7 @@ import SwiftUI
 
 public struct AlertViewButtonStyle: ButtonStyle {
     
-    private let pcConfig = PageContainerConfig.sharedInstance
+    private let pcConfig = PageContainerConfig.shared
     
     public func makeBody(configuration: Configuration) -> some View {
         configuration.label
@@ -31,7 +31,7 @@ public struct ActionSheetButtonStyle: ButtonStyle {
         self.selected = selected
     }
     
-    private let pcConfig = PageContainerConfig.sharedInstance
+    private let pcConfig = PageContainerConfig.shared
     
     public func makeBody(configuration: Configuration) -> some View {
         HStack {
@@ -68,7 +68,7 @@ public struct BottomButtonsButtonStyle: ButtonStyle {
         self.selected = selected
     }
     
-    private let pcConfig = PageContainerConfig.sharedInstance
+    private let pcConfig = PageContainerConfig.shared
     
     public func makeBody(configuration: Configuration) -> some View {
         HStack {

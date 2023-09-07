@@ -13,7 +13,7 @@ public struct PageContainerBorder: ViewModifier {
     var width: CGFloat
     var color: Color
     
-    public init(cornerRadius: CGFloat = PageContainerConfig.sharedInstance.cornerRadius.base,
+    public init(cornerRadius: CGFloat = PageContainerConfig.shared.cornerRadius.base,
                   width: CGFloat = 1.0,
                   color: Color = .black) {
         self.cornerRadius = cornerRadius
@@ -38,7 +38,7 @@ public struct PageContainerTopBorder: ViewModifier {
     var color: Color
     var backgroundColor: Color
     
-    public init(cornerRadius: CGFloat = PageContainerConfig.sharedInstance.cornerRadius.base,
+    public init(cornerRadius: CGFloat = PageContainerConfig.shared.cornerRadius.base,
                 width: CGFloat = 1.0,
                 color: Color = .black,
                 backgroundColor: Color = Color(UIColor.systemBackground)) {

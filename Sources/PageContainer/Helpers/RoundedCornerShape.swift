@@ -39,7 +39,7 @@ public struct ThemeLeftCornersModifier: ViewModifier {
     
     var cornerRadius: CGFloat
     
-    public init(cornerRadius: CGFloat = PageContainerConfig.sharedInstance.cornerRadius.base) {
+    public init(cornerRadius: CGFloat = PageContainerConfig.shared.cornerRadius.base) {
         self.cornerRadius = cornerRadius
     }
     
@@ -53,7 +53,7 @@ public struct ThemeRightCornersModifier: ViewModifier {
     
     var cornerRadius: CGFloat
     
-    public init(cornerRadius: CGFloat = PageContainerConfig.sharedInstance.cornerRadius.base) {
+    public init(cornerRadius: CGFloat = PageContainerConfig.shared.cornerRadius.base) {
         self.cornerRadius = cornerRadius
     }
     
@@ -67,7 +67,7 @@ public struct ThemeTopCornersModifier: ViewModifier {
     
     var cornerRadius: CGFloat
     
-    public init(cornerRadius: CGFloat = PageContainerConfig.sharedInstance.cornerRadius.base) {
+    public init(cornerRadius: CGFloat = PageContainerConfig.shared.cornerRadius.base) {
         self.cornerRadius = cornerRadius
     }
     
@@ -81,7 +81,7 @@ public struct ThemeBottomCornersModifier: ViewModifier {
     
     var cornerRadius: CGFloat
     
-    public init(cornerRadius: CGFloat = PageContainerConfig.sharedInstance.cornerRadius.base) {
+    public init(cornerRadius: CGFloat = PageContainerConfig.shared.cornerRadius.base) {
         self.cornerRadius = cornerRadius
     }
     

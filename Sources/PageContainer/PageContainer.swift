@@ -11,7 +11,7 @@ public struct PageContainer<Content: View>: View {
     
     @ObservedObject var viewModel: PageContainerViewModel
     private let content: Content
-    private let config = PageContainerConfig.sharedInstance
+    private let config = PageContainerConfig.shared
     
     public init(_ containerModel: PageContainerViewModel,
                 @ViewBuilder content: () -> Content) {

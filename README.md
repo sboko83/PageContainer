@@ -119,6 +119,11 @@ All usage examples are here: [Demo folder](https://github.com/sboko83/PageContai
 
 ## Change log
 
+**0.4.1**
+- PageContainerConfig refactoring.
+- Added setLightStyle method to PageContainerConfig.
+- Some demo updates.
+
 **0.4**
 - Added the ability to display Custom View.
 - Refactoring.

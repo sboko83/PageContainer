@@ -12,7 +12,7 @@ open class PageContainerViewModel: ObservableObject {
     
     public init() {}
     
-    private let config = PageContainerConfig.sharedInstance
+    private let config = PageContainerConfig.shared
     
     
     @Published var lockContentState: Bool = false

@@ -6,103 +6,134 @@
 //
 
 import SwiftUI
-import Combine
 import PageContainer
 
 struct TestPageView: View {
     
     @StateObject private var viewModel = TestViewModel()
     
+    @State private var darkStyle: Bool = true
+    
     var body: some View {
         PageContainer(viewModel) {
-            VStack(spacing: 0) {
-                HStack(spacing: 0) {
-                    TableCellView {
-                        Text("PageContainer:").bold()
-                    }
-                    TableCellView {
-                        Text("System views:").bold()
-                    }
-                }
-                .padding(.bottom, 8.0)
-                
-                HStack(spacing: 0) {
-                    TableCellView {
-                        Button(action: viewModel.testLoading) {
-                            Text("Loading")
+            ScrollView(.vertical) {
+                VStack(spacing: 0) {
+                    Group {
+                        Text("PageContainer demo")
+                            .bold()
+                        
+                        HStack(spacing: 0) {
+                            TableCellView(showBorder: false) {
+                                Text("Default style:")
+                                    .bold()
+                            }
+                            TableCellView(showBorder: false) {
+                                Text("System style:")
+                                    .bold()
+                            }
+                        }
+                        
+                        HStack(spacing: 0) {
+                            Button(action: viewModel.testLoading) {
+                                TableCellView {
+                                    Text("Loading (3 sec)")
+                                }
+                            }
+                            TableCellView {
+                                Text("---")
+                            }
+                        }
+                        
+                        HStack(spacing: 0) {
+                            Button(action: viewModel.testSimpleMessage) {
+                                TableCellView {
+                                    Text("Alert info")
+                                }
+                            }
+                            TableCellView {
+                                Text("---")
+                            }
+                        }
+                        
+                        HStack(spacing: 0) {
+                            Button(action: viewModel.testError) {
+                                TableCellView {
+                                    Text("Alert error")
+                                }
+                            }
+                            TableCellView {
+                                Text("---")
+                            }
+                        }
+                        
+                        HStack(spacing: 0) {
+                            Button(action: viewModel.testAlert) {
+                                TableCellView {
+                                    Text("Alert")
+                                }
+                            }
+                            TableCellView {
+                                Text("---")
+                            }
+                        }
+                        
+                        HStack(spacing: 0) {
+                            Button(action: { viewModel.testActionSheet(body: AnyView(actionSheetBody)) }) {
+                                TableCellView {
+                                    Text("ActionSheet")
+                                }
+                            }
+                            TableCellView {
+                                Text("---")
+                            }
+                        }
+                        
+                        HStack(spacing: 0) {
+                            Button(action: viewModel.testBottomButtons) {
+                                TableCellView {
+                                    Text("BottomButtons")
+                                }
+                            }
+                            TableCellView {
+                                Text("---")
+                            }
+                        }
+                        
+                        HStack(spacing: 0) {
+                            Button(action: { viewModel.testCustomView(AnyView(customBody)) }) {
+                                TableCellView {
+                                    Text("Custom view")
+                                }
+                            }
+                            TableCellView {
+                                Text("---")
+                            }
                         }
                     }
-                    TableCellView {
-                        Text("---")
-                    }
-                }
-                
-                HStack(spacing: 0) {
-                    TableCellView {
-                        Button(action: viewModel.testSimpleMessage) {
-                            Text("Alert info")
+                    
+                    Divider()
+                        .padding(.top)
+                    
+                    Group {
+                        Text("Settings")
+                            .bold()
+                            .padding(.top)
+                        
+                        Toggle(isOn: $darkStyle) {
+                            Text("Dark style")
                         }
+                        .padding()
                     }
-                    TableCellView {
-                        Text("---")
-                    }
+                    
+                    Spacer(minLength: 0.0)
                 }
-                
-                HStack(spacing: 0) {
-                    TableCellView {
-                        Button(action: viewModel.testError) {
-                            Text("Alert error")
-                        }
-                    }
-                    TableCellView {
-                        Text("---")
-                    }
-                }
-                
-                HStack(spacing: 0) {
-                    TableCellView {
-                        Button(action: viewModel.testAlert) {
-                            Text("Alert")
-                        }
-                    }
-                    TableCellView {
-                        Text("---")
-                    }
-                }
-                
-                HStack(spacing: 0) {
-                    TableCellView {
-                        Button(action: { viewModel.testActionSheet(body: AnyView(actionSheetBody)) }) {
-                            Text("ActionSheet")
-                        }
-                    }
-                    TableCellView {
-                        Text("---")
-                    }
-                }
-                
-                HStack(spacing: 0) {
-                    TableCellView {
-                        Button(action: viewModel.testBottomButtons) {
-                            Text("BottomButtons")
-                        }
-                    }
-                    TableCellView {
-                        Text("---")
-                    }
-                }
-                
-                HStack(spacing: 0) {
-                    TableCellView {
-                        Button(action: { viewModel.testCustomView(AnyView(customBody)) }) {
-                            Text("Custom view")
-                        }
-                    }
-                    TableCellView {
-                        Text("---")
-                    }
-                }
-                
+            }
+        }
+        .onChange(of: darkStyle) { newValue in
+            if newValue {
+                PageContainerConfig.shared.setDarkStyle()
+            } else {
+                PageContainerConfig.shared.setLightStyle()
             }
         }
     }
@@ -119,41 +150,9 @@ struct TestPageView: View {
     }
 }
 
-struct ActionSheetBodyView: View {
-    
-    @Binding var incrementElement: Int
-    
-    var body: some View {
-        VStack(alignment: .center, spacing: 0) {
-            Text("ActionSheetBody:\nIncrement element: \(incrementElement)")
-                .multilineTextAlignment(.center)
-                .foregroundColor(PageContainerConfig.sharedInstance.color.actionSheet.title)
-        }
-    }
-}
-
-struct TableCellView<Content: View>: View {
-    
-    let content: Content
-    
-    init(@ViewBuilder content: () -> Content) {
-        self.content = content()
-    }
-    
-    var body: some View {
-        HStack(spacing: 0) {
-            Spacer(minLength: 0.0)
-            content
-            Spacer(minLength: 0.0)
-        }
-        .padding(8.0)
-        .border(.gray, width: 1.0)
-        .padding(8.0)
-    }
-}
-
 struct TestPageView_Previews: PreviewProvider {
     static var previews: some View {
         TestPageView()
+            .previewDevice("iPhone SE (3rd generation)")
     }
 }
