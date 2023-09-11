@@ -117,6 +117,18 @@ struct TestPageView: View {
 
 ## Изменения
 
+**0.4.2**
+- Формирование ActionSheetView полностью вынесено из модели в основное View.
+Изменения в Demo-проекте: 
+- Изменения структуры проекта.
+- Переработан показ ActionSheetView и BottomButtonsView.
+- PageContainer теперь не как зависимость SPM, а ссылка на папку.
+
+**0.4.1**
+- PageContainerConfig рефакторинг.
+- Добавлен метод setLightStyle в PageContainerConfig.
+- Некоторые изменения в демо-проекте.
+
 **0.4**
 - Добавлена возможность показа CustomView.
 - Рефакторинг.

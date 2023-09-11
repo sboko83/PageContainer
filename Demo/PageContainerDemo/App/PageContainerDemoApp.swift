@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import PageContainer
 
 @main
 struct PageContainerDemoApp: App {
@@ -22,7 +21,7 @@ struct PageContainerDemoApp: App {
     }
     
     private func setupContainerConfig() {
-        let config = PageContainerConfig.shared
-        config.setDarkStyle()
+//        let config = PageContainerConfig.shared
+//        config.setDarkStyle()
     }
 }

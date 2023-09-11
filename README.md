@@ -119,6 +119,13 @@ All usage examples are here: [Demo folder](https://github.com/sboko83/PageContai
 
 ## Change log
 
+**0.4.2**
+- The creation of the ActionSheetView is completely removed from the model into the main View.
+Changes in the Demo project:
+- Changes in the project structure.
+- Redesigned the display of ActionSheetView and BottomButtonsView.
+- PageContainer is no longer a dependency of SPM, but a link to a folder.
+
 **0.4.1**
 - PageContainerConfig refactoring.
 - Added setLightStyle method to PageContainerConfig.

@@ -6,13 +6,14 @@
 //
 
 import SwiftUI
-import PageContainer
 
 struct TestPageView: View {
     
     @StateObject private var viewModel = TestViewModel()
     
-    @State private var darkStyle: Bool = true
+    @State private var actionSheetIncrement: Int = 1
+    
+    @State private var darkStyle: Bool = false
     
     var body: some View {
         PageContainer(viewModel) {
@@ -34,7 +35,7 @@ struct TestPageView: View {
                         }
                         
                         HStack(spacing: 0) {
-                            Button(action: viewModel.testLoading) {
+                            Button(action: viewModel.prepareLoading) {
                                 TableCellView {
                                     Text("Loading (3 sec)")
                                 }
@@ -45,7 +46,7 @@ struct TestPageView: View {
                         }
                         
                         HStack(spacing: 0) {
-                            Button(action: viewModel.testSimpleMessage) {
+                            Button(action: viewModel.prepareSimpleMessage) {
                                 TableCellView {
                                     Text("Alert info")
                                 }
@@ -56,7 +57,7 @@ struct TestPageView: View {
                         }
                         
                         HStack(spacing: 0) {
-                            Button(action: viewModel.testError) {
+                            Button(action: viewModel.prepareError) {
                                 TableCellView {
                                     Text("Alert error")
                                 }
@@ -67,7 +68,7 @@ struct TestPageView: View {
                         }
                         
                         HStack(spacing: 0) {
-                            Button(action: viewModel.testAlert) {
+                            Button(action: viewModel.prepareAlert) {
                                 TableCellView {
                                     Text("Alert")
                                 }
@@ -78,7 +79,7 @@ struct TestPageView: View {
                         }
                         
                         HStack(spacing: 0) {
-                            Button(action: { viewModel.testActionSheet(body: AnyView(actionSheetBody)) }) {
+                            Button(action: { prepareActionSheet() }) {
                                 TableCellView {
                                     Text("ActionSheet")
                                 }
@@ -89,7 +90,7 @@ struct TestPageView: View {
                         }
                         
                         HStack(spacing: 0) {
-                            Button(action: viewModel.testBottomButtons) {
+                            Button(action: prepareBottomButtons) {
                                 TableCellView {
                                     Text("BottomButtons")
                                 }
@@ -100,7 +101,7 @@ struct TestPageView: View {
                         }
                         
                         HStack(spacing: 0) {
-                            Button(action: { viewModel.testCustomView(AnyView(customBody)) }) {
+                            Button(action: { viewModel.prepareCustomView(AnyView(customBody)) }) {
                                 TableCellView {
                                     Text("Custom view")
                                 }
@@ -138,16 +139,57 @@ struct TestPageView: View {
         }
     }
     
+    @ViewBuilder
     private var actionSheetBody: some View {
-        AnyView(ActionSheetBodyView(incrementElement: self.$viewModel.incrementElement))
+        ActionSheetBodyView(incrementElement: $actionSheetIncrement)
     }
     
+    @ViewBuilder
     private var customBody: some View {
         actionSheetBody
             .padding(24.0)
             .background(Color.green.cornerRadius(12.0))
             .padding()
     }
+    
+    func prepareActionSheet() {
+        var buttons: [ActionSheetButton] = []
+        
+        let simpleBtn = ActionSheetButton(title: "Simple style button", selected: false) {
+            print("Simple style button pressed")
+        }
+        buttons.append(simpleBtn)
+        
+        let incrementBtn = ActionSheetButton(title: "Button increment", isClose: false, selected: false) {
+            actionSheetIncrement += 1
+            print("Button increment pressed: \(actionSheetIncrement)")
+        }
+        buttons.append(incrementBtn)
+        
+        let selectedBtn = ActionSheetButton(title: "Selected style button", selected: true) {
+            print("Selected style button pressed")
+        }
+        buttons.append(selectedBtn)
+        
+        viewModel.showActionSheet(title: "Title", body: AnyView(actionSheetBody), buttons: buttons)
+    }
+    
+    func prepareBottomButtons() {
+        var buttons: [ActionSheetButton] = []
+        
+        let simpleBtn = ActionSheetButton(title: "Simple style button", selected: false) {
+            print("Simple style button pressed")
+        }
+        buttons.append(simpleBtn)
+        
+        let selectedBtn = ActionSheetButton(title: "Selected style button", selected: true) {
+            print("Selected style button pressed")
+        }
+        buttons.append(selectedBtn)
+        
+        viewModel.showBottomButtons(title: "Title", buttons: buttons)
+    }
+    
 }
 
 struct TestPageView_Previews: PreviewProvider {
